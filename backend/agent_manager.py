@@ -26,6 +26,9 @@ class AgentManager:
         elif intent == "compatibility":
             return self.compat.retrieve(query)
 
+        elif intent == "questionanswer":
+            return self.compat.retrieve(query)
+
         elif intent == "out_of_scope":
             return {
                 "response": (
