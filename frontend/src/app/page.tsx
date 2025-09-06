@@ -22,13 +22,13 @@ export default function Home() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState('DeepSeek');
+  const [selectedModel, setSelectedModel] = useState('DeepSeek Chat');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const models = [
-    { name: 'DeepSeek', description: 'Fast & Efficient' },
-    { name: 'OpenAI ChatGPT', description: 'Advanced Reasoning' }
+    { name: 'DeepSeek Chat', description: 'Fast & Efficient' },
+    { name: 'DeepSeek Reasoner', description: 'Advanced Reasoning' }
   ];
 
   // Close dropdown when clicking outside
