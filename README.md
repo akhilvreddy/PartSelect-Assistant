@@ -5,6 +5,8 @@ An AI-powered question-answering agent designed to help users find appliance par
 
 ## Demo
 
+The demo is [here](https://www.loom.com/share/ff4e094c9dd446ceb79f9ca594d1e617?sid=d4ada82a-edb7-455f-9016-96dcfab39593)!
+
 ## Examples
 
 1) Out of Scope
