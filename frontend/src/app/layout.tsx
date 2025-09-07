@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'PartSelect QA Assistant',
+  title: 'PartSelect Q&A Assistant',
   description: 'AI-powered question-answering agent for PartSelect appliance parts - specializing in dishwashers and refrigerators',
   keywords: 'appliance parts, dishwasher, refrigerator, repair, PartSelect, AI assistant',
   authors: [{ name: 'Akhil Reddy' }],

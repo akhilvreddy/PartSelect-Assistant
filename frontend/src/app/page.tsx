@@ -22,13 +22,12 @@ export default function Home() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState('DeepSeek');
+  const [selectedModel, setSelectedModel] = useState('DeepSeek Chat');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const models = [
-    { name: 'DeepSeek', description: 'Fast & Efficient' },
-    { name: 'OpenAI ChatGPT', description: 'Advanced Reasoning' }
+    { name: 'DeepSeek Chat', description: 'Fast & Efficient' }
   ];
 
   // Close dropdown when clicking outside
@@ -56,20 +55,52 @@ export default function Home() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
 
-    // Simulate AI response (replace with actual API call)
-    setTimeout(() => {
-      const aiResponse: Message = {
+    try {
+      // removed chat.ts just for simplicity -> make the API call right here async
+      const response = await fetch('http://localhost:8000/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: currentInput,
+          model: selectedModel === 'DeepSeek Chat' ? 'deepseek-chat' : 'deepseek-reasoning'
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const aiResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: data.response || data.message || 'I received your message but got an unexpected response format.',
+          isUser: false,
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, aiResponse]);
+      } else {
+        const errorResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: `Sorry, I encountered an error (HTTP ${response.status}). Please try again or check if the backend is running.`,
+          isUser: false,
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, errorResponse]);
+      }
+    } catch (error) {
+      const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: `I understand you're asking about "${input}". This is a demo response using ${selectedModel}. In the full implementation, I would analyze your query and provide specific information about dishwasher or refrigerator parts, repair procedures, or compatibility checks.`,
+        text: `Sorry, I couldn't connect to the backend. Please make sure the API server is running on localhost:8000. Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
         isUser: false,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -135,7 +166,7 @@ export default function Home() {
                 <Wrench className="h-6 w-6 text-[#337778]" />
               </div>
               <div className="text-center">
-                <h1 className="text-2xl font-bold text-white">PartSelect.com QA Assistant</h1>
+                <h1 className="text-2xl font-bold text-white">PartSelect.com Q&A Assistant</h1>
                 <p className="text-sm text-teal-100">Dishwasher & Refrigerator Parts Expert</p>
               </div>
             </div>
@@ -143,11 +174,11 @@ export default function Home() {
             {/* Right: Navigation Links */}
             <div className="flex items-center justify-end space-x-4">
               <Link 
-                href="/how-it-works"
+                href="/test-api"
                 className="flex items-center space-x-2 text-white hover:text-teal-100 transition-colors"
-                title="Learn how this AI assistant works"
+                title="Test the API connection"
               >
-                <span className="text-sm font-medium">How This Works</span>
+                <span className="text-sm font-medium">Test API</span>
                 <Info className="h-4 w-4" />
               </Link>
               <div className="text-white/30 text-lg">|</div>
@@ -264,7 +295,7 @@ export default function Home() {
             {[
               "How much is a dishwasher drain pump (120v 60hz)?",
               "How can I install part number PS11752778?",
-              "Is this part compatible with my WDT780SAEM1 model?",
+              "Is this part (PS10065979) compatible with my WDT780SAEM1 model?",
               "The ice maker on my Whirlpool fridge is not working. How can I fix it?",
             ].map((query, index) => (
               <button
@@ -278,6 +309,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+
 
       {/* Footer */}
       <footer className="mt-16 bg-[#337778] border-t">
