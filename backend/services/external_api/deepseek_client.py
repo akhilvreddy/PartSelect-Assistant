@@ -58,13 +58,14 @@ class DeepSeekClient:
         except (KeyError, IndexError) as e:
             raise Exception(f"Unexpected DeepSeek API response format: {e}")
     
-    def chat_with_system(self, system_prompt: str, user_prompt: str, max_tokens: int = 1000, temperature: float = 0.7) -> str:
+    def chat_with_system(self, system_prompt: str, user_prompt: str, model: str = "deepseek-chat", max_tokens: int = 1000, temperature: float = 0.7) -> str:
         """
         Send a prompt with system message to DeepSeek.
         
         Args:
             system_prompt: System/instruction prompt
             user_prompt: User's actual prompt
+            model: The model to use (deepseek-chat or deepseek-reasoning)
             max_tokens: Maximum tokens in response
             temperature: Response creativity 0.0-1.0
             
@@ -80,7 +81,7 @@ class DeepSeekClient:
         }
         
         data = {
-            "model": "deepseek-chat",
+            "model": model,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}

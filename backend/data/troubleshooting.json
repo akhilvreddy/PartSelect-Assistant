@@ -1,0 +1,359 @@
+[
+  {
+    "id": "dishwasher-lower-dishrack-wheel-w10195416",
+    "appliance": "dishwasher",
+    "symptom": "Not cleaning dishes properly, Door won't close, Noisy, Door latch failure",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Lower Dishrack Wheel",
+        "part_number": "W10195416",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Not cleaning dishes properly | Door won't close | Noisy | Door latch failure. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["W10195416V", "W10195416VP"]
+      }
+    ],
+    "text": "Lower Dishrack Wheel W10195416 fixes symptoms: Not cleaning dishes properly, Door won't close, Noisy, Door latch failure"
+  },
+  {
+    "id": "dishwasher-upper-rack-adjuster-kit-w10712395",
+    "appliance": "dishwasher",
+    "symptom": "Door won't close, Door latch failure, Not cleaning dishes properly, Noisy",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Upper Rack Adjuster Kit",
+        "part_number": "W10712395",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't close | Door latch failure | Not cleaning dishes properly | Noisy. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP5957560", "W10250159", "W10350375", "W10712395VP"]
+      }
+    ],
+    "text": "Upper Rack Adjuster Kit W10712395 fixes symptoms: Door won't close, Door latch failure, Not cleaning dishes properly, Noisy"
+  },
+  {
+    "id": "dishwasher-upper-rack-adjuster-wpw10546503",
+    "appliance": "dishwasher",
+    "symptom": "Door won't close, Door latch failure, Not cleaning dishes properly, Leaking",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Upper Rack Adjuster",
+        "part_number": "WPW10546503",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't close | Door latch failure | Not cleaning dishes properly | Leaking. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP6022813", "W10306646", "W10418314", "W10546502", "W10546503", "W10911100", "WPW10546503VP"]
+      }
+    ],
+    "text": "Dishwasher Upper Rack Adjuster WPW10546503 fixes symptoms: Door won't close, Door latch failure, Not cleaning dishes properly, Leaking"
+  },
+  {
+    "id": "dishwasher-rack-track-stop-wp8565925",
+    "appliance": "dishwasher",
+    "symptom": "Door latch failure, Not cleaning dishes properly, Door won't close, Noisy",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Rack Track Stop",
+        "part_number": "WP8565925",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door latch failure | Not cleaning dishes properly | Door won't close | Noisy. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP6013365", "8270105", "8270106", "8524581", "8524582", "8562015", "8565920", "8565925", "W10082860", "W10082861", "W10199682", "W10508950", "WP8565925VP", "WPW10082861VP", "WPW10508950", "WPW10508950VP"]
+      }
+    ],
+    "text": "Dishwasher Rack Track Stop WP8565925 fixes symptoms: Door latch failure, Not cleaning dishes properly, Door won't close, Noisy"
+  },
+  {
+    "id": "dishwasher-lower-dishrack-roller-wpw10195417",
+    "appliance": "dishwasher",
+    "symptom": "Door won't close, Door latch failure, Not cleaning dishes properly",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Lower Dishrack Roller",
+        "part_number": "WPW10195417",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't close | Door latch failure | Not cleaning dishes properly. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP6016764", "W10195417", "WPW10195417VP"]
+      }
+    ],
+    "text": "Dishwasher Lower Dishrack Roller WPW10195417 fixes symptoms: Door won't close, Door latch failure, Not cleaning dishes properly"
+  },
+  {
+    "id": "lower-spray-arm-5304517203",
+    "appliance": "dishwasher",
+    "symptom": "Not cleaning dishes properly, Leaking, Noisy, Not draining",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Lower Spray Arm",
+        "part_number": "5304517203",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Not cleaning dishes properly | Leaking | Noisy | Not draining. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["154250801", "154250901", "154281101", "154414101", "154414102", "154568001", "154568002", "5304506526"]
+      }
+    ],
+    "text": "Lower Spray Arm 5304517203 fixes symptoms: Not cleaning dishes properly, Leaking, Noisy, Not draining"
+  },
+  {
+    "id": "lower-spray-arm-wd22x33499",
+    "appliance": "dishwasher",
+    "symptom": "Not cleaning dishes properly, Noisy, Leaking, Not draining",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Lower Spray Arm",
+        "part_number": "WD22X33499",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Not cleaning dishes properly | Noisy | Leaking | Not draining. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["WD22X10091", "WD22X25962", "WD22X26621", "WD22X27724"]
+      }
+    ],
+    "text": "Lower Spray Arm WD22X33499 fixes symptoms: Not cleaning dishes properly, Noisy, Leaking, Not draining"
+  },
+  {
+    "id": "dishwasher-lower-rack-roller-wd12x26146",
+    "appliance": "dishwasher",
+    "symptom": "General dishwasher issues",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Lower Rack Roller",
+        "part_number": "WD12X26146",
+        "fix_percentage": 100,
+        "description": "This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["WD12X10435"]
+      }
+    ],
+    "text": "Dishwasher Lower Rack Roller WD12X26146 for general dishwasher maintenance"
+  },
+  {
+    "id": "dishwasher-bottom-door-gasket-809006501",
+    "appliance": "dishwasher",
+    "symptom": "Leaking, Not cleaning dishes properly, Door won't close, Door latch failure",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Bottom Door Gasket",
+        "part_number": "809006501",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Leaking | Not cleaning dishes properly | Door won't close | Door latch failure. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP5809675", "154297601", "154297602", "154297603", "154576501", "154588201", "154759101"]
+      }
+    ],
+    "text": "Dishwasher Bottom Door Gasket 809006501 fixes symptoms: Leaking, Not cleaning dishes properly, Door won't close, Door latch failure"
+  },
+  {
+    "id": "dishwasher-heating-element-w10518394",
+    "appliance": "dishwasher",
+    "symptom": "Not drying dishes properly, Not cleaning dishes properly, Will Not Start, Leaking",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Dishwasher Heating Element",
+        "part_number": "W10518394",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Not drying dishes properly | Not cleaning dishes properly | Will Not Start | Leaking. This part works with dishwashers.",
+        "part_url": "",
+        "replaces": ["AP5690151", "2977737", "W10518394", "8194250", "8563007", "8563464", "8572861", "W10134009", "W10441445", "W10518394VP"]
+      }
+    ],
+    "text": "Dishwasher Heating Element W10518394 fixes symptoms: Not drying dishes properly, Not cleaning dishes properly, Will Not Start, Leaking"
+  },
+  {
+    "id": "refrigerator-door-shelf-bin-242126602",
+    "appliance": "refrigerator",
+    "symptom": "General refrigerator issues",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Door Shelf Bin",
+        "part_number": "242126602",
+        "fix_percentage": 100,
+        "description": "This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP6278233"]
+      }
+    ],
+    "text": "Refrigerator Door Shelf Bin 242126602 for general refrigerator maintenance"
+  },
+  {
+    "id": "refrigerator-door-bin-wpw10321304",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close, Ice maker won't dispense ice, Leaking",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Door Bin",
+        "part_number": "WPW10321304",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close | Ice maker won't dispense ice | Leaking. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP6019471", "2171046", "2171047", "2179574", "2179575", "2179607", "2179607K", "2198449", "2198449K", "2304235", "2304235K", "W10321302", "W10321303", "W10321304", "W10549739", "WPW10321304VP"]
+      }
+    ],
+    "text": "Refrigerator Door Bin WPW10321304 fixes symptoms: Door won't open or close, Ice maker won't dispense ice, Leaking"
+  },
+  {
+    "id": "refrigerator-everydrop-ice-water-filter-edr1rxd1",
+    "appliance": "refrigerator",
+    "symptom": "Not dispensing water, Ice maker not making ice, Ice maker won't dispense ice, Leaking",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Everydrop Ice & Water Filter",
+        "part_number": "EDR1RXD1",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Not dispensing water | Ice maker not making ice | Ice maker won't dispense ice | Leaking. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP5982535", "9900", "9981", "EDR1RXD1B", "FILTER 1", "FILTER1", "W10217316", "W10291030", "W10295370", "W10295370A", "W10569758", "W10569760", "W10569761", "W10735398"]
+      }
+    ],
+    "text": "Refrigerator Everydrop Ice & Water Filter EDR1RXD1 fixes symptoms: Not dispensing water, Ice maker not making ice, Ice maker won't dispense ice, Leaking"
+  },
+  {
+    "id": "door-shelf-retainer-bar-240534901",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close, Leaking",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Door Shelf Retainer Bar",
+        "part_number": "240534901",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close | Leaking. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP3214630", "948954", "240534901"]
+      }
+    ],
+    "text": "Door Shelf Retainer Bar 240534901 fixes symptoms: Door won't open or close, Leaking"
+  },
+  {
+    "id": "refrigerator-water-filter-eptwfu01",
+    "appliance": "refrigerator",
+    "symptom": "Ice maker not making ice",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Water Filter",
+        "part_number": "EPTWFU01",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Ice maker not making ice. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP5962272", "5304519147", "5304520985", "807946701", "EPTWFU01C"]
+      }
+    ],
+    "text": "Refrigerator Water Filter EPTWFU01 fixes symptoms: Ice maker not making ice"
+  },
+  {
+    "id": "door-shelf-retainer-bar-240534701",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Door Shelf Retainer Bar",
+        "part_number": "240534701",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP3214631", "948952", "240534701"]
+      }
+    ],
+    "text": "Door Shelf Retainer Bar 240534701 fixes symptoms: Door won't open or close"
+  },
+  {
+    "id": "refrigerator-crisper-drawer-wp2188656",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close, Ice maker not making ice, Leaking, Ice maker won't dispense ice",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Crisper Drawer w/Humidity Control",
+        "part_number": "WP2188656",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close | Ice maker not making ice | Leaking | Ice maker won't dispense ice. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP6006055", "2173384", "2173386", "2173694", "2173714", "2173715", "2174109", "2174416", "2175075", "2179281", "2179347", "2188652", "2188656", "2189529", "2189629", "2194072", "2194078", "2194081", "2194087", "2194904", "2194914", "2194978", "2194979", "2196160", "2196230", "2196232", "2197834", "WP2188656VP"]
+      }
+    ],
+    "text": "Refrigerator Crisper Drawer w/Humidity Control WP2188656 fixes symptoms: Door won't open or close, Ice maker not making ice, Leaking, Ice maker won't dispense ice"
+  },
+  {
+    "id": "refrigerator-door-shelf-retainer-bin-240337901",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close, Noisy, Touchpad does not respond",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Door Shelf Retainer Bin",
+        "part_number": "240337901",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close | Noisy | Touchpad does not respond. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP2115858", "891047", "240337901", "240337904", "240337905"]
+      }
+    ],
+    "text": "Refrigerator Door Shelf Retainer Bin 240337901 fixes symptoms: Door won't open or close, Noisy, Touchpad does not respond"
+  },
+  {
+    "id": "door-bin-clear-240356402",
+    "appliance": "refrigerator",
+    "symptom": "General refrigerator issues",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Door Bin (Clear)",
+        "part_number": "240356402",
+        "fix_percentage": 100,
+        "description": "This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP2549958", "891214", "240356402", "240356407", "240356408", "240356410", "240356411", "240356413", "240356414", "240356415", "240356416", "240430305", "240430307", "240430311", "240430312", "240430325", "241808205", "241808206", "241808221", "241808229"]
+      }
+    ],
+    "text": "Door Bin (Clear) 240356402 for general refrigerator maintenance"
+  },
+  {
+    "id": "refrigerator-door-shelf-bin-240338001",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close, Noisy",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Refrigerator Door Shelf Bin",
+        "part_number": "240338001",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close | Noisy. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP2115859", "891049", "240338001", "240338005"]
+      }
+    ],
+    "text": "Refrigerator Door Shelf Bin 240338001 fixes symptoms: Door won't open or close, Noisy"
+  },
+  {
+    "id": "door-rack-240535101",
+    "appliance": "refrigerator",
+    "symptom": "Door won't open or close",
+    "url": "",
+    "common_parts": [
+      {
+        "part_name": "Door Rack",
+        "part_number": "240535101",
+        "fix_percentage": 100,
+        "description": "This part fixes the following symptoms: Door won't open or close. This part works with refrigerators.",
+        "part_url": "",
+        "replaces": ["AP3214801", "948956", "240535101"]
+      }
+    ],
+    "text": "Door Rack 240535101 fixes symptoms: Door won't open or close"
+  }
+]

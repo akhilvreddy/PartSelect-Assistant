@@ -1,18 +1,27 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, Dict, Any, List
 from agent_manager import AgentManager
-# from vector_manager import VectorManager
 from services.health_service.health_service import HealthService
 from services.intent_service.intent_service import IntentService
 import time
 
 app = FastAPI(title="PartSelect Assistant API", version="1.0.0")
 
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"], # Frontend URLs
+    allow_credentials=True,
+    allow_methods=["*"], # allow all HTTP methods
+    allow_headers=["*"], # allow all headers
+)
+
 # Pydantic models for request/response validation
 class ChatRequest(BaseModel):
     query: str
-    model: str = "deepseek"
+    model: str = "deepseek-chat"
 
 class QueryRequest(BaseModel):
     query: str
@@ -34,16 +43,15 @@ class SearchResponse(BaseModel):
     query: str
     results: List[Any]
 
-# track uptime
+# uptime tracking for health API
 START_TIME = time.time()
 
 # services
 health_service = HealthService(START_TIME)
 intent_service = IntentService()
 
-# managers
+# manager instance
 agent_manager = AgentManager()
-# vector = VectorManager()
 
 @app.post("/chat")
 async def chat(request: ChatRequest) -> Dict[str, Any]:
@@ -51,7 +59,7 @@ async def chat(request: ChatRequest) -> Dict[str, Any]:
     Main chat endpoint - handles user queries through the complete flow:
     Intent Classification → Retriever → Response Generation
     """
-    response = agent_manager.handle_chat_request(request.query)
+    response = agent_manager.handle_chat_request(request.query, request.model)
     return response
 
 @app.get("/health")
@@ -71,14 +79,6 @@ async def intents(request: QueryRequest) -> IntentResponse:
     return IntentResponse(
         query=request.query,
         intent=intent
-    )
-
-@app.post("/search")
-async def search(request: SearchRequest) -> SearchResponse:
-    results = vector.search(request.query, k=request.k)
-    return SearchResponse(
-        query=request.query,
-        results=results
     )
 
 if __name__ == "__main__":

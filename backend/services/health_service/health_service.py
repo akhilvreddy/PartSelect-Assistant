@@ -4,7 +4,6 @@ Health Service - Handles application health checks and system status
 import time
 from typing import Dict, Any
 
-
 class HealthService:
     def __init__(self, start_time: float):
         self.start_time = start_time
@@ -33,12 +32,6 @@ class HealthService:
             Dict containing detailed health information
         """
         basic_health = self.get_health_status()
-        
-        # Can be extended with additional checks:
-        # - Database connectivity
-        # - External API availability
-        # - Memory/CPU usage
-        # - Disk space
         
         detailed_status = {
             **basic_health,

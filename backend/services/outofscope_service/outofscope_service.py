@@ -10,7 +10,7 @@ class OutOfScopeService:
     """
     
     def __init__(self):
-        self.partselect_message = "Sorry, I am a bot only for helping on partselect.com specifically with dishwasher and refrigerator parts. I can help you with compatibility, installation, troubleshooting, or general questions about dishwashers and refridgerators on this page."
+        self.partselect_message = "Unfortunately I cannot help you with your request. I am an agent only for helping with questions on partselect.com, specifically with dishwasher and refrigerator parts. I can help you with compatibility, installation, troubleshooting, or general questions about dishwashers and refridgerators on this page."
     
     def get_out_of_scope_response(self) -> Dict[str, Any]:
         """

@@ -4,7 +4,6 @@ Intent Service - Handles intent classification for user queries
 from services.external_api.deepseek_client import DeepSeekClient
 from typing import Dict, Any
 
-
 class IntentService:
     """
     Service for classifying user queries into intent categories.
@@ -45,13 +44,13 @@ Respond with ONLY the intent category name. No explanations. You must follow the
             response = self.deepseek_client.chat_with_system(
                 system_prompt=system_prompt,
                 user_prompt=query,
+                model="deepseek-chat",
                 max_tokens=10,
                 temperature=0.1
             )
             
             intent = response.lower().strip()
             
-            # Validate the response is one of our expected intents
             if intent in self.valid_intents:
                 return intent
             else:
