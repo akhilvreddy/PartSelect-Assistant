@@ -1,9 +1,9 @@
 # PartSelect.com Q&A Assistant
 
-An AI-powered question-answering agent designed to help users find appliance parts and repair information on [partselect.com](https://www.partselect.com), specifically the dishwasher and refridgerator sections.
+An AI-powered question-answering agent designed to help users find appliance parts and repair information on [partselect.com](https://www.partselect.com), specifically the dishwasher and refrigerator sections.
 
 
-## Demo! (Loom)
+## Demo
 
 
 ## Features
@@ -20,7 +20,7 @@ An AI-powered question-answering agent designed to help users find appliance par
 ### Agentic Flows by Query Type
 - General QnA → Searches the entire vector database to check for similarity and responds.
 - Compatibility → Runs a compatibility RAG flow to check if parts work with given models.
-- Installation → Calls an installation scraper or retrieval pipeline for step-by-step guides.
+- Installation → Calls a retrieval pipeline for step-by-step guides.
 - Troubleshooting → Calls a troubleshooting flow to suggest solutions based on common issues.
 - Out of Scope → Routes irrelevant questions to an “out of scope” handler.
 
@@ -31,7 +31,7 @@ An AI-powered question-answering agent designed to help users find appliance par
 ### Backend
 - Python backend with FastAPI to handle requests
 - API Documentation and testing (swagger) provided out of the box (`localhost:8000/docs`)
-- Integration with Deepseek language model for generation.
+- Integration with Deepseek language model for intent detection and text generation.
 - Vector database (Chroma on local) for retrieval.
 - Modular architecture for easy extension (new flows, more product types).
 
@@ -40,6 +40,14 @@ An AI-powered question-answering agent designed to help users find appliance par
 - Prevents hallucinations by grounding answers in retrieved docs.
 - Out-of-scope guardrails to keep responses on track.
 
+## Tech Stack
+- Frontend: Next.js 15, React 19, Tailwind CSS
+- Backend: FastAPI, Python 3.8+
+- AI: DeepSeek (Chat), OpenAI Embeddings
+- Database: ChromaDB Local Storage
+- Deployment: Local Development
+
+---
 
 ## Technical Architecture
 
@@ -49,79 +57,69 @@ An AI-powered question-answering agent designed to help users find appliance par
   <img src="docs/images/frontend-user-flow.png" alt="Frontend User Flow" />
 </div>
 
+The user starts by entering a query, which makes its way from the React input box all the way to the `/chat` API endpoint and back in the same way. I originally had a `chat.ts` file but ended up removing it since I could make the API call right from `page.tsx`.
+
 ### Backend response generation flow
 <div align="center">
   <img src="docs/images/backend-architecture.png" alt="Backend Flow" />
 </div>
 
+As soon as a request hits the `/chat` API, the first thing that the agent manager does is identify the intent. This is done by an internal call to DeepSeek's API where it classifies the query as one of the 5 shown above. If the query's intent is out of scope, a pre-made response saying that it can't help is quickly sent back to the user. If the query does fall under one of the 4 pre-scoped ones that we have, we call a retriever (which hits a local VectorDB + optionally a object map) to get the specific information that the query was asking for. Finally, we send the information to a prompt builder (which is made specifically for each intent) and the whole thing is sent to the LLM to generate a coherent response.
+
+### Retriever Deep Dive
+
+Each intent type triggers a specialized retriever that uses different data sources and processing logic:
+
+**Compatibility Retriever**
+- **Data Sources:** Parts ↔ Model mapping + VectorDB (filtered on compatibility)
+- **Process:** Takes a part number and model, checks both structured mapping data and semantic similarity in the vector database
+- **Output:** Compatibility status with specific model information
+
+**Installation Retriever** 
+- **Data Sources:** Installation Manual (scraped) + VectorDB (filtered on installation)
+- **Process:** Searches through step-by-step installation guides using semantic similarity
+- **Output:** Detailed installation instructions specific to the part/appliance
+
+**General Q&A Retriever**
+- **Data Sources:** VectorDB (full database search)
+- **Process:** Performs broad semantic search across all available product information
+- **Output:** Relevant product details, specifications, or general information
+
+**Troubleshoot Retriever**
+- **Data Sources:** Troubleshoot mapping + VectorDB (filtered on troubleshoot)
+- **Process:** Matches symptoms to known issues using both structured troubleshooting data and semantic search
+- **Output:** Diagnostic steps and potential solutions
+
+**Out of Scope Handler**
+- **Process:** Returns a pre-defined response without hitting any database
+- **Output:** Polite message explaining the system's scope limitations
+
 ## Project Structure
 
 ```
 PartSelect-Assistant/
-├── README.md                           # Main project documentation
-├── .gitignore                          # Git ignore patterns
-│
-├── docs/                              # Documentation and assets
+├── README.md                         # Main project documentation
+├── docs/                             # Documentation and assets
 │   └── images/
-│       ├── backend-architecture.png   # Backend flow diagram
-│       └── frontend-user-flow.png     # Frontend user flow diagram
 │
-├── backend/                           # Python backend (FastAPI)
-│   ├── .env.example                   # Environment variables template
-│   ├── requirements.txt               # Python dependencies
-│   ├── app.py                         # Main FastAPI application
-│   ├── config.py                      # Configuration management
-│   ├── agent_manager.py               # Core agent orchestration
-│   ├── vector_manager.py              # Vector database operations
-│   │
-│   ├── retrievers/                    # RAG retrieval modules
-│   │   ├── __init__.py
-│   │   ├── compatibility_retriever.py # Part compatibility logic
-│   │   ├── part_retriever.py          # Product information retrieval
-│   │   └── symptom_retriever.py       # Troubleshooting retrieval
-│   │
-│   ├── services/                      # External API integrations
-│   │   ├── deepseek_client.py         # DeepSeek API client
-│   │   ├── openai_client.py           # OpenAI API client
-│   │   └── google_search.py           # Web search integration
-│   │
-│   ├── utils/                         # Utility functions
-│   │   ├── chunking.py                # Text processing utilities
-│   │   └── logging_utils.py           # Logging configuration
-│   │
-│   └── tests/                         # Unit tests
-│       ├── test_agent_intent.py       # Intent classification tests
-│       └── test_vector.py             # Vector operations tests
+├── backend/                          # Python backend (FastAPI)
+│   ├── app.py                        # Main FastAPI application
+│   ├── agent_manager.py              # Core agent orchestration
+│   ├── services/                     # External API integrations & retrievers
+│   ├── utils/                        # Utility functions
+│   └── tests/                        # Unit tests
 │
-└── frontend/                          # Next.js frontend
-    ├── .env.local.example             # Frontend environment template
-    ├── package.json                   # Node.js dependencies
-    ├── next.config.ts                 # Next.js configuration
-    ├── tsconfig.json                  # TypeScript configuration
-    ├── tailwind.config.ts             # Tailwind CSS configuration
-    ├── vercel.json                    # Vercel deployment config
-    │
-    ├── public/                        # Static assets
-    │   ├── file.svg
-    │   ├── globe.svg
-    │   ├── next.svg
-    │   ├── vercel.svg
-    │   └── window.svg
-    │
-    └── src/
-        └── app/                       # Next.js App Router
-            ├── layout.tsx             # Root layout component
-            ├── page.tsx               # Main chat interface
-            ├── globals.css            # Global styles
-            ├── favicon.ico            # Site icon
-            └── how-it-works/          # How it works page
-                └── page.tsx
+└── frontend/                         # Next.js frontend
+    ├── package.json                  # Node.js dependencies
+    ├── next.config.ts                # Next.js configuration
+    └── src/app/                      # Next.js App Router
+        ├── layout.tsx                # Root layout component
+        ├── page.tsx                  # Main chat interface
+        ├── test-api/                 # API testing page
+        ├── globals.css               # Global styles
+        └── favicon.ico               # Site icon
 ```
-
-The core parts are: 
-- `/frontend`: Next.js project with...
-- `/backend`: A python backend with FastAPI that hosts our APIs
-- `/docs`: Docs and images about the project architecture 
+---
 
 ## Getting Started
 
@@ -141,79 +139,105 @@ Before running this project, make sure you have the following installed:
 - DeepSeek API key (for language model generation)
 - OpenAI API key (optional, for embeddings/alternative models)
 
-
+---
 
 ### Installation
 
-There's a couple ways that we can get up and running: the native method or via docker.
+To get up and running we need to launch the frontend (which is a Next.js application) and the backend (Python + FastAPI).
 
-#### Native
-
-**1. Clone the Repository**
+**Clone the Repository**
 ```bash
 git clone https://github.com/akhilvreddy/PartSelect-Assistant
 cd PartSelect-Assistant
 ```
 
-**2. Backend Setup**
-```bash
-cd backend
+**Frontend Setup**
 
-# Create virtual env
-python3 -m venv .venv
+First direct into the `/frontend` folder.
 
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your actual API keys and configuration
-```
-
-After this step, direct back to the root of the repository.
-
-**3. Frontend Setup**
 ```bash
 cd frontend
+```
 
-# Install Node.js dependencies
+Install node dependencies.
+```bash
 npm install
-
 ```
 
-Again, please direct back to the root of the repository.
+To run the application in dev (which is what I did):
 
-**4. Run the Application**
 ```bash
-# Terminal 1: Start the backend
-cd backend
-python app.py
-
-# Terminal 2: Start the frontend
-cd frontend
 npm run dev
+```
+
+For production (not needed right now):
+```bash
+npm start
+```
+
+**Backend Setup**
+
+Now direct into the `/backend` folder.
+
+```bash
+cd backend
+```
+
+Create a virtual environment.
+
+```bash
+python3 -m venv .venv
+```
+Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+Set up environment variables by editing .env with your actual API keys and configuration.
+
+```bash
+cp .env.example .env
+```
+
+Start the API
+
+```bash
+python app.py
 ```
 
 The application will be available at:
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
-- API Documentation: http://localhost:5000/docs
+- Backend API: http://localhost:8000
+- API Documentation (Swagger): http://localhost:8000/docs
 
-#### Docker
+---
 
-Docker simplifies things a lot via the `docker-compose.yaml` file that I wrote. 
+## API
+
+This is what the API interface looks like
+
+<div align="center">
+  <img src="docs/images/api.png" alt="API schema" />
+</div>
+
+### POST /chat
+Main endpoint for user queries. Accepts a POST request with the user's question and returns an AI-generated response using RAG pipeline and intent classification.
+
+### GET /health
+Simple health check endpoint that returns the API status. Used for monitoring and testing if the backend service is running properly.
+
+### POST /intents
+This is an internal API used to identify the user's intent once a query comes into `/chat`.
 
 
 ## Development Process
 
-When starting this project, I first started out by listing the requirements of what the agent had to do and was able to narrow it to the 5 specific flows (as shown in the diagram above). After that, I quickly sketched out the APIs that the backend would have to provide for the frontend to work nicely. After getting those setup, I grabbed the hex codes of the two main colors of [PartSelect](https://partselect.com) and fed that into Cursor and let it help me create the frontend. I made a couple more user experience updates on the frontend (like giving the user ability to select the model version) and updated the APIs to reflect those changes.
-
-## Evaluation Metrics
-
-keep for later for now
+When starting this project, I first started out by listing the requirements of what the agent had to do and was able to narrow it to the 5 specific flows (as shown in the diagram above). After that, I quickly sketched out the APIs that the backend would have to provide for the frontend to work nicely. After getting those setup, I grabbed the hex codes of the two main colors of [PartSelect](https://partselect.com) and based the schema of this application based on that color palette.
 
 
-## Future Enhancements  
+
+
+## Future Enhancements
 
 If this were to go into production, there are several key improvements I would prioritize to make the agent more robust, scalable, and user-friendly:  
 
@@ -221,7 +245,7 @@ If this were to go into production, there are several key improvements I would p
    - Add login support and user profiles so customers can save queries, track past troubleshooting steps, and receive personalized recommendations.  
 
 2. **Enhanced Data Retrieval**  
-   - Move from lightweight scraping to a crawled and indexed knowledge base refreshed occassionally.  
+   - Move from lightweight scraping to a crawled and indexed knowledge base refreshed occasionally that sits on a CICD pipeline.  
 
 3. **Multi-Modal Support**  
    - Allow users to upload images of appliance model labels or parts.  
@@ -231,11 +255,13 @@ If this were to go into production, there are several key improvements I would p
    - Add metrics on latency, error rates, and intent classification accuracy.  
    - Centralize logs with something like ELK or OpenTelemetry for debugging.  
 
-## CI/CD
+5. **Infrastructure**
+   - Since this is a Next.js application, it would make a lot of sense to host the frontend on Vercel.
+   - The backend could be hosted on any cloud provider as a container or via Render by giving it the build commands for `/backend`.
 
 
 
 
 ---
 
-*Instalily Case Study 09/2025.*
+*InstalilyAI Case Study 09/2025.*
