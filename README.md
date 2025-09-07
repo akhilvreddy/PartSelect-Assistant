@@ -1,8 +1,6 @@
-# PartSelect.com QA Assistant
+# PartSelect.com Q&A Assistant
 
 An AI-powered question-answering agent designed to help users find appliance parts and repair information on [partselect.com](https://www.partselect.com), specifically the dishwasher and refridgerator sections.
-
-The agent is hosted here: .
 
 
 ## Demo! (Loom)
@@ -16,10 +14,11 @@ The agent is hosted here: .
 
 ### Product Information Retrieval (RAG)
 - Integrates a retrieval-augmented generation (RAG) pipeline using a vector database.
-- Retrieves relevant product details (e.g., compatibility, installation guides, troubleshooting steps).
+- Retrieves relevant product details
 - Optimized retrieval with embeddings ensures accurate and context-aware responses.
 
 ### Agentic Flows by Query Type
+- General QnA → Searches the entire vector database to check for similarity and responds.
 - Compatibility → Runs a compatibility RAG flow to check if parts work with given models.
 - Installation → Calls an installation scraper or retrieval pipeline for step-by-step guides.
 - Troubleshooting → Calls a troubleshooting flow to suggest solutions based on common issues.
@@ -33,7 +32,7 @@ The agent is hosted here: .
 - Python backend with FastAPI to handle requests
 - API Documentation and testing (swagger) provided out of the box (`localhost:8000/docs`)
 - Integration with Deepseek language model for generation.
-- Vector database (e.g., FAISS / Chroma / Pinecone) for retrieval.
+- Vector database (Chroma on local) for retrieval.
 - Modular architecture for easy extension (new flows, more product types).
 
 ### Error & Edge-Case Handling
@@ -232,9 +231,9 @@ If this were to go into production, there are several key improvements I would p
    - Add metrics on latency, error rates, and intent classification accuracy.  
    - Centralize logs with something like ELK or OpenTelemetry for debugging.  
 
-## Infrastructure
+## CI/CD
 
-To host `/frontend` I used Vercel since this was a Next.js application. I was able to host `/backend` on Render by conneting the repository and giving it the build commands which made the deployment process super simple.
+
 
 
 ---
