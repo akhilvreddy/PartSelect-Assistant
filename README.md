@@ -5,6 +5,39 @@ An AI-powered question-answering agent designed to help users find appliance par
 
 ## Demo
 
+## Examples
+
+1) Out of Scope
+
+<div align="center">
+  <img src="docs/images/example_oos.png" alt="Frontend User Flow" />
+</div>
+
+2) Compatibility
+
+<div align="center">
+  <img src="docs/images/example_compatibility.png" alt="Frontend User Flow" />
+</div>
+
+3) Installation
+
+<div align="center">
+  <img src="docs/images/example_installation.png" alt="Frontend User Flow" />
+</div>
+
+4) Troubleshoot
+
+<div align="center">
+  <img src="docs/images/example_troubleshoot.png" alt="Frontend User Flow" />
+</div>
+
+5) General QnA
+
+<div align="center">
+  <img src="docs/images/example_qna.png" alt="Frontend User Flow" />
+</div>
+
+The main thing I was struggling with is formatting the responses in a proper way. The text is being turned in markdown format but outputted as a plain text file which I am working on fixes on the frontend.
 
 ## Features
 
