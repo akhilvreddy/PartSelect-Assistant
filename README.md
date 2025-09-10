@@ -298,5 +298,3 @@ If this were to go into production, there are several key improvements I would p
 
 
 ---
-
-*InstalilyAI Case Study 09/2025.*
